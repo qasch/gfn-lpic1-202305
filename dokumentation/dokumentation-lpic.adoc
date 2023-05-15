@@ -1,0 +1,12 @@
+= Dokumentation LPIC 1
+
+== Kommandos
+
+* `whoami` 
+* `pwd` 
+* `ls` 
+* `cd` 
+* `clear` 
+
+
+Markdown
