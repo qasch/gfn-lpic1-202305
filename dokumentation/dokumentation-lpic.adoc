@@ -13,6 +13,14 @@
 * `touch` - kann leere Dateien erstellen
 * `cat` - Gibt den Inhalt von Dateien aus
 * `rm` - löscht Dateien
+* `date` - gibt das aktuellen Datum und Uhrzeit aus
+* `date '+%d.%m.%Y'` git das Datum in folgendem Format aus: `16.05.2023`
+
+== Hilfe auf der Kommandozeile
+
+=== Manpages
+
+ man <kommando>
 
 == Sonderzeichen
 
@@ -45,7 +53,29 @@ Wegbeschreibung vom aktuellen Verzeichnis aus bis zum Ziel
  cd /home/tux/spielwiese
  cd viele-dateien
 
+== Variablen
 
+Erstellung einer Variablen und Zuweisung eines Wertes:
 
+ my_var=hallo
 
+Ausgabe des Inhalts einer Variablen (_Variablensubstitution_):
 
+ echo $my_var
+
+Das Dollarzeichen (`$`) ist wieder ein Sonderzeichen. Es weist die Shell an, eine _Substitution_ (Ersetzung) durchzuführen.
+
+Variablen sind immer nur in der *aktuellen* Shell gültig, nicht in z.B. _Subshells_, also Shells, die innerhalt der aktuellen Shell laufen.
+
+Will man Variablen auch in Subshells verfügbar machen, so muss man diese _exportieren_:
+
+ export my_env_var=überall
+
+ my_var=hallo
+ export my_var
+
+Variablen sind so lange gültig, wie die Shell existiert, in der sie definiert wurden.
+
+Variablen können mit `unset` gelöscht werden:
+
+ unset my_var
