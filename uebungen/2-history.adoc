@@ -1,0 +1,29 @@
+= Übungen zu History und Variablen
+
+== Grundlegende Befehle
+
+Findet drei bis vier verschiedene Möglichkeiten, von überall her in euer Heimatverzeichnis zu wechseln.
+
+== History
+
+=== Übung
+
+Macht euch mit weiteren Funktionen der History vertraut, indem ihr die Manpage (`man history`) studiert und anschliessend mit den folgenden Befehlen "herumspielt".
+
+Schreibt auf, was man mit den folgenden Kommandos erreichen kann:
+
+
+ history 
+ history <zahl>
+
+ !!
+ !-<zahl>
+ !<zahl>
+ !<zeichenfolge> !?<zeichenfolge>
+
+ !-<zahl>:$
+ !!:0-
+ !<zahl>^
+
+ <Strg+r><zeichenfolge> gefolgt von <Tab> (mehrmals)
+
