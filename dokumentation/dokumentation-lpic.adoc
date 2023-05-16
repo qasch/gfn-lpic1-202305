@@ -2,10 +2,50 @@
 
 == Kommandos
 
-* `whoami` 
-* `pwd` 
-* `ls` 
-* `cd` 
-* `clear` 
+* `whoami` - Gibt den aktuellen Benutzer aus
+* `pwd` _Present Working Directory_ - Gibt den absoluten Pfad des aktuellen Verzeichnisses an
+* `ls` - Gibt den Inhalt des aktuellen Verzeichnisses aus
+* `ls -a` - Gibt den Inhalt des aktuellen Verzeichnisses aus, _alles_, inkl. der versteckten Dateien/Verzeichnisse
+* `ls -l` - Gibt den Inhalt des aktuellen Verzeichnisses aus, mit zusätzlichen Informationen zu den Dateien
+* `cd` - _Change Directory_ - Wechselt in das angegebene Verzeichnis, ohne Optionen direkt in das Heimatverzeichnis
+* `clear` - Leert den Bildschirm (`STRG+L`)
+* `mkdir` - erstellt ein Verzeichnis
+* `touch` - kann leere Dateien erstellen
+* `cat` - Gibt den Inhalt von Dateien aus
+* `rm` - löscht Dateien
+
+== Sonderzeichen
+
+=== Globbing Characters
+
+Die Shell versucht immer, diese Sonderzeichen zu interpretieren
+
+* `*` - Asterisk - steht für ein beliebiges Zeichen, dass *beliebig oft* vorkommen darf
+* `?` - Fragezeichen - steht für ein beliebiges Zeichen, dass *exakt einmal* vorkommen darf
+* ` ` - Leerzeichen - ist das *Trennzeichen*, trennt z.B. Kommando von Optionen und oder Argumenten etc.
+
+== Maskieren / Escaping von Sonderzeichen
+
+* `\` - Backslash - verhindert, dass die Shell das direkt darauf folgende Zeichen interpretiert
+* alternativ können Sonderzeichen auch in einfache (`'`) oder doppelte (`"`) Anführungszeichen eingefasst werden
+* es gibt einen Unterschied zwischen einfachen und doppelten Anführungszeichen
+
+== Pfadangaben
+
+=== absolut
+
+Wegbeschreibung vom Wurzelverzeichnis `/` bis zum Ziel
+
+ cd /home/tux/spielwiese/viele-dateien
+
+=== relativ
+
+Wegbeschreibung vom aktuellen Verzeichnis aus bis zum Ziel
+
+ cd /home/tux/spielwiese
+ cd viele-dateien
+
+
+
 
 
