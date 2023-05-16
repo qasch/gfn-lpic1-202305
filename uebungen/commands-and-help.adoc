@@ -24,6 +24,10 @@ Findet die Bedeutung der folgenden Optionen von `ls` mit Hilfe der Manpage herau
 -d
 ----
 
+Findet heraus, was folgende Optionen von `ls` bewirken:
+
+ ls -lisahF
+
 Probiert die Optionen natürlich auch aus!
 
 === Übungen (Zusatz)
