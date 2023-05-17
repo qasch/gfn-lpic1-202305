@@ -100,7 +100,7 @@ Einige wichtige Kommandos dazu:
 * `cp quelle ziel` kopiert Datei `quelle` nach `ziel` (`ziel` kann/muss aber nicht existieren. Falls `ziel` existiert, wird die Datei *ohne Nachfrage* überschrieben
 * `cp -r quell_verz ziel_verz` kopiert das *Verzeichnis* `quell_verz` in das Zielverzeichnis `ziel_verz`
 * `mv quelle ziel` verschiebt `quelle` nach `ziel` (egal ob Datei oder Verzeichnis)
-* `rm datei` löschte `datei`
+* `rm datei` löschte `datei` (ohne Nachfrage)
 * `rm -r verz` löscht `verz` inkl. Inhalt
 * `rmdir verz` löscht das *leere* Verzeichnis `verz`
 
