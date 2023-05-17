@@ -45,3 +45,17 @@ Erselle ein Verzeichnis "uebungen-dateien-verzeichnisse" im aktuellen Verzeichni
 5. Verschiebt jetzt die drei Dateien von `MyDir` nach `~/Mydir/Unterdir`. Benennt anschließend das Verzeichnis `UnterDir` in `MyFiles` um.
 
 6. Löscht zuerst alle Dateien in `UnterUnterDir` mit einem Befehl und löscht danach das nun leere Verzeichnis.
+
+== Zusatz
+
+1. Was passiert, wenn ihr versehentlich versucht, drei Dateien auf der gleichen Befehlszeile in eine bereits vorhandene Datei zu kopieren anstatt in ein Verzeichnis?
+
+2. Was passiert, wenn ihr mit `mv` ein Verzeichnis in sich selbst verschiebt?
+
+3. Verwendet die Man Page von `cp`, um herauszufinden, wie man eine Kopie einer Datei erstellt und die Berechtigungen und Änderungszeiten mit dem Original übereinstimmen.
+
+4. Ihr befindet euch im folgenden Verzeichnis: `/opt/someprog/config/system/users`
+
+In welchem Verzeichnis befindet ihr euch, nachdem ihr folgenden Befehl eingegeben habt:
+
+ cd ../users/../././../../././././../
