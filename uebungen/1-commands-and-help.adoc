@@ -40,6 +40,7 @@ Mit dem Kommando `date` kann man sich das aktuelle Datum und die aktuelle Uhrzei
    2. 13:34 Uhr (aktuelle Uhrzeit)
 
 2. Wie spät ist es denn gerade in Los Angeles? Versucht die Lösung zuerst in den Manpages zu finden, recherchiert ansonsten im Internet.
+
 == Arten von Kommandos
 
 === Übung
