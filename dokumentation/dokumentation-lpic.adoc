@@ -79,3 +79,17 @@ Variablen sind so lange gültig, wie die Shell existiert, in der sie definiert w
 Variablen können mit `unset` gelöscht werden:
 
  unset my_var
+
+== History
+
+Alle eingegebenen Kommandos werden in der _history_ gespeichert. Zuerst im Speicher und letztlich beim Beenden der Shell in der Datei `~/.bash_histroy`.
+
+Einige wichtige Kommandos dazu:
+
+* `history` ruft die gesamte history auf
+* `history <anzahl>` zeigt nur die <anzahl> der letzten Einträge auf
+* `!!` führt das letzte Kommanod erneut aus
+* `!<zahl>` führt Kommando mit index <zahl> aus
+* `!<zeichenfolge>` führt letztes Kommando aus, das mit `<zeichenfolge>` beginnt 
+* `!?<zeichenfolge>` führt letztes Kommando aus, das `<zeichenfolge>` enthält
+* `!$` repräsentiert das letzte Argument des zuletzt eingegebenen Kommandos
