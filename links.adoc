@@ -1,0 +1,10 @@
+= Einige nützliche Links
+
+== Unterlagen zu Linux
+
+- https://www.tuxcademy.org/
+
+== Prüfung
+
+- https://wiki.lpi.org/wiki/LPIC-1_Objectives_V5.0
+
