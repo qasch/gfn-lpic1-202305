@@ -93,3 +93,16 @@ Einige wichtige Kommandos dazu:
 * `!<zeichenfolge>` führt letztes Kommando aus, das mit `<zeichenfolge>` beginnt 
 * `!?<zeichenfolge>` führt letztes Kommando aus, das `<zeichenfolge>` enthält
 * `!$` repräsentiert das letzte Argument des zuletzt eingegebenen Kommandos
+
+== Dateioperationen
+
+* `mkdir verz` erstellt das Verzeichnis `verz`
+* `cp quelle ziel` kopiert Datei `quelle` nach `ziel` (`ziel` kann/muss aber nicht existieren. Falls `ziel` existiert, wird die Datei *ohne Nachfrage* überschrieben
+* `cp -r quell_verz ziel_verz` kopiert das *Verzeichnis* `quell_verz` in das Zielverzeichnis `ziel_verz`
+* `mv quelle ziel` verschiebt `quelle` nach `ziel` (egal ob Datei oder Verzeichnis)
+* `rm datei` löschte `datei`
+* `rm -r verz` löscht `verz` inkl. Inhalt
+* `rmdir verz` löscht das *leere* Verzeichnis `verz`
+
+
+
