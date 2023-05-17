@@ -19,11 +19,17 @@ Schreibt auf, was man mit den folgenden Kommandos erreichen kann:
  !!
  !-<zahl>
  !<zahl>
- !<zeichenfolge> !?<zeichenfolge>
+ !<zeichenfolge> 
+ !?<zeichenfolge>
+
+ !$
+
+ <Strg+r><zeichenfolge> gefolgt von <Strg+r> (mehrmals)
+
+Zusatz:
 
  !-<zahl>:$
  !!:0-
  !<zahl>^
 
- <Strg+r><zeichenfolge> gefolgt von <Tab> (mehrmals)
 
