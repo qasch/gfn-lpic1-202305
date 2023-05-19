@@ -105,4 +105,86 @@ Einige wichtige Kommandos dazu:
 * `rmdir verz` löscht das *leere* Verzeichnis `verz`
 
 
+== Aliase
+
+Abkürzungen für z.B. längere/häufig benutzte Kommandos
+
+ alias ll='ls -l'
+
+Alias löschen:
+
+ unalias ll
+
+Alle Aliase anzeigen:
+
+ alias
+
+Aliase können persistent konfiguriert werden, z.B. in der Datei `~/.bashrc` bzw. in `~/.bash_aliases`
+
+Nach Änderungen muss die Datei `~/.bashrc` neu eingelesen werden. Dies geschieht automatisch beim Start einer neuen BASH oder alternativ mit dem Kommanod `source` bzw. dessen Abkürzung `.`
+
+ source ~/.bashrc
+ . ~/.bashrc
+
+== Konfigurationsdateien
+
+=== Benutzerspezifische 
+
+* beginnen immer mit einem Punkt bzw. befinden sich in einem Verzeichnis, das mit einem Punkt beginnt
+* sind immer im Heimatverzeichnis des Nutzers
+
+=== Systemweite
+
+* alle systemweiten Konfigurationsdateien befinden sich im Verzeichnis `/etc`
+
+== Textströme
+
+=== UNIX Philosophie
+
+1. Schreibe Programme so, dass sie *eine* Aufgabe erledigen und diese gut machen
+2. Schreibe Programme so, dass sie zusammenarbeiten
+3. Schreibe Programme so, dass sie Textströme verarbeiten, denn Text ist eine universelle Schnittstelle
+
+Vereinfacht gesagt: Mache eine Sache und mache diese gut (KISS Prinzip)
+
+* KISS: Keep it simple, stupid!
+* KISS: Keep it stupid simple
+* KISS: Keep it super simple
+
+=== Standardkanäle
+
+* `stdin` - Standardeingabekanal - `0`
+* `stdout` - Standardausgabekanal - `1`
+* `stderr` - Standardfehlerkanal - `2`
+
+== Redirect
+
+* Kanäle können umgeleitet werden, entweder in Dateien oder andere Kommandos
+* `kommando 1>datei`: Ausgabe von `kommando` wird in Datei umgeleitet, Inhalt der Datei wird ersetzt
+* `kommando > datei`: gleich wie oben, `1` kann weggelassen werden
+* `kommando >> datei`: gleich wie oben, Inhalt wird an Datei angehängt
+* `kommando < datei`: Inhalt von datei wird an die Standardeingabe von Kommando gesendet/umgeleitet
+* Sowohl Ausgabe als auch Fehler in gleiche Datei leiten: `kommando >textdatei 2>&1` bzw. `kommando >& textdatei`
+* `kommando1 | kommando2`: die Ausgabe (Kanal 1) von `kommando1` wird an die Eingabe (Kanal 0) von `kommando2` geleitet
+
+== Filterkommandos
+
+* `grep`
+* `cut`
+* `wc`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
