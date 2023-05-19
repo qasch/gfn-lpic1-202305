@@ -8,7 +8,7 @@ a) Lasst euch alle Zeilen der Datei `~/.bashrc` ausgeben, in denen etwas zu Alia
 
 a.1) Wie viele sind es?
 
-b) Findet alle Zeilen in allen Dateien in eurem Heimatverzeichniss, in denen etwas zu Aliasen steht.
+b) Findet alle Zeilen in allen Dateien in eurem Heimatverzeichniss, in denen etwas zu Aliasen steht. Erstellt dazu vielleicht im Vorfeld die Datei `~/.bash_aliases` mit einigen selbst definierten Aliasen.
 
 c) Eleminiert nun alle Zeilen von der Ausgabe (aus Aufgabe a), die nur Kommentare sind (also mit einer Raute `#` beginnen).
 
