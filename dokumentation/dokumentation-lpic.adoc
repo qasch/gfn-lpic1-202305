@@ -236,6 +236,35 @@ echo $var
 
  echo -e "Hallo, ich bin $(grep $(whoami) /etc/passwd | cut -d: -f5 | cut -d, -f1).\n\nHeute ist der $(date '+%d.%m.%Y, %H:%M')." > username.txt
 
+== Dateisystembaum unter Linux
+
+Filesystem Hierarchy Standard - FHS: Eine Empfehlung an alle Distributionen, wie der Dateisystembaum unter UNIX/Linux aufgebaut sein sollte.
+
+- `/bin`: common executables available for everyone, `ex. cp rm ls`
+- `/boot`: kernel and boot configuration, initial ramdisk, kernel image
+- `/dev`: files which point to both physical and pseudo devices, populated by `udev`
+- `/etc`: systemwide configuration files
+- `/home`: non-root user home directories
+- `/lib`: library files used by the system, include `.so` files and others
+- `/lib32`: library files used by the system, include `.so` files and others
+- `/lib64`: library files used by the system, include `.so` files and others
+- `/lost+found`: saved files due to failure, not relevant for users, just for the system
+- `/media`: auto-mounting place for certain external devices on some distros
+- `/mnt`: place to mount various file systems
+- `/opt`: various software, not installed by package manager
+- `/proc`: virtual filesystem (`procfs`) for resources, processes, and more, only in memory, not actual files on hard disk
+- `/root`: root user home directory
+- `/sbin`: similar to `/bin`, but for system administrators, ex. `fdisk`
+- `/tmp`: temporary file storage, wiped out after reboot
+- `/usr`: user programs, library files, docs, etc.
+- `/var`: variable files for various purposes, ex. logs, tz data, files for webserver (debian)
+- `/vmlinuz`: boot/vmlinuz-4.15.0-43-generic: compressed linux kernel 
+
+=== weitere wichtige Verzeichnisse (nicht Bestandteil des FHS)
+
+- `/sys`: virtual filesystem (`sysfs`), extension to `/proc`
+- `/run`: virtual filesystem, was under `/var/run` (symlinked) before, applications can store data needed to operate, e.g. `.lock` files
+
 == Prozesse
 
 Ein Programm resultiert immer in mindestens einem Prozess. Prozesse laufen jeweils in einem von anderen unabhängigen "Resourcenraum", haben eine eigene PID, kennen nur die PID des Prozesses, von dem sie gestartet wurden (Elternprozess). Prozesse können mit dem Kommando `kill` über _Signale_ beeinflusst werden.
@@ -263,7 +292,21 @@ Auf der Shell kann immer nur ein einzelner Prozess im Vordergrund ausgeführt we
 * `top`: Anzeige laufender Prozesse, ähnlich zum Taskmanager unter Windows, Prozesse können auch interaktiv beeinflusst werden
 * `htop`: komfortablere Variante von `top`
 
+=== Ausfühungsprioritäten Prozesse
 
+* es gibt normale Prozesse und realtime Prozesse
+* realtime Prozesse haben Prioritäten zwischen 0 und 99
+* normale Prozesse haben Prioriäten zwischen 100 und 139
+* Standardpriorität ist 120
+* je geringer die Priorität ist, desto mehr CPU Leistung bekommt ein Prozess
+* `ps` zeigt Prioritäten von -40 bis 99, wir addieren also immer 40 dazu
+* `top` zeigt Prioritäten von -100 bis 39, wir addieren alos immer 100 dazu
+* `nice` kann einem Kommando beim Start eine geringere/höhere Ausführungspriorität zuweisen
+  * Werte von -20 bis -1 koennen nur von `root` zugewiesen werden
+  * Werte von 0 bis 19 von normalen Benutzern
+  * ein hoeherer `nice` - Wert bedeute, dass der Prozess eine *geringere* Ausführungspriorität zugewiesen bekommt (Prozess ist _nicer/netter_ zu anderen Prozessen)
+* `renice` kann einem Kommando im laufenden Betrieb eine andere Priorität zuweisen
+* nur `root` kann `renice` ausführen
 
 
 
