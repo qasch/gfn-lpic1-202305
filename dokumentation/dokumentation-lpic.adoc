@@ -178,9 +178,79 @@ Textströme können mit Filterkommandos bearbeitet werden, so dass die Informati
 * `wc`: gibt die Anzahl der Zeilen, Wörter und Bytes einer Datei an (`wc -l /etc/passwd`: Anzahl Zeilen der Datei `/etc/passwd`)
 * `tee`: verzweigt den Textstrom, so dass sowohl eine Ausgabe erfolgt, als auch in eine Datei geschrieben werden kann (`ls /etc | tee ls-etc.txt`)
 
+== Kommandosubstitution
 
+* `$(kommando)`: `kommando` wird (in einer Subshell) ausgeführt und durch sein Ergebnis ersetzt: 
+  * Bsp.: Unterschied von `var=date` gegenüber `var=$(date)`:  
+  
+----
+var=date
+echo $var
+> date   # String/Zeichenkette date wird ausgegeben
+----
 
+----
+var=$(date)
+echo $var
+> Tue May 23 03:42:43 PM CEST 2023   # aktuelles Datum wird ausgegeben
+----
 
+* \`kommdo\`: ältere Syntax für die Kommandosubstitution
+
+== echo
+
+* `echo -e`: so kann `echo` gewisse Steuerungszeichen interpretieren, um z.B. einen Zeilenumbruch zu erzeugen, einen horizontalen oder vertikalen Tabulator, ein Backspace etc.
+* diese Steuerungszeichen / Sequenzen beginnen mit einem `\` (Backslash)
+* `echo -e '\n'`: echo gibt eine (zusätzliche) Leerzeile aus (echo an sich führt bereits einen Zeilenumbruch am Ende der Ausgabe aus, so erhalten wir also zwei Leerzeilen) 
+* `\n` muss in diesem Fall _escaped/maskiert/gequotet_ werden, damit nicht die BASH, sondern das Kommando an sich (`echo`) den Backslash als Sonderzeichen interpretieren kann
+* der Backslash muss sozusagen vor der Shell "versteckt" werden
+* das Escapen kann sowohl durch Einfassen in einfache oder doppelete Anführungszeichen (`'` oder `"`) erfolgen, oder durch die Voranstellung eines Backslashs (`\`)
+
+ echo -e '\n'
+ echo -e "\n"
+ echo -e \\n
+
+* Unterschied von einfachen und doppelten Anführungszeichen bei der Substitution mit `$`:
+
+ my_var=hallo
+ echo '$my_var'
+ > $my_var
+
+ echo "$my_var"
+ > hallo
+
+=== Beispiele Kommandosubstitution und echo
+
+ echo -e "Hallo, ich bin $(grep ${USER} /etc/passwd | cut -d: -f5 | cut -d, -f1).\n\nHeute ist der $(date '+%d.%m.%Y, %H:%M')." > username.txt
+
+ echo -e "Hallo, ich bin $(grep $(whoami) /etc/passwd | cut -d: -f5 | cut -d, -f1).\n\nHeute ist der $(date '+%d.%m.%Y, %H:%M')." > username.txt
+
+== Prozesse
+
+Ein Programm resultiert immer in mindestens einem Prozess. Prozesse laufen jeweils in einem von anderen unabhängigen "Resourcenraum", haben eine eigene PID, kennen nur die PID des Prozesses, von dem sie gestartet wurden (Elternprozess). Prozesse können mit dem Kommando `kill` über _Signale_ beeinflusst werden.
+
+Auf der Shell kann immer nur ein einzelner Prozess im Vordergrund ausgeführt werden. Prozesse können mit der Tastenkomnination `STRG+Z` angehalten und in den Hintergrund geschickt werden. Mit dem Kommando `bg` kann dieser Prozess dann im Hintergund fortgesetzt werden, `fg` holt den Prozess in den Vordergrund zurück.
+
+* `ps -aux`: Anzeige aller laufende Prozessez
+* `ps -ef`: auch Anzeige aller laufenden Prozesse
+* `ps --forest`: Prozesshirarchie (Baumstruktur) anzeigen
+* `jobs`: Anzeigen der Hintergrundprozesse
+* `jobs %<jobnummer>`: bestimmten Job ansprechen
+* `fg`: letzten/aktuellen/default Job in den Vordergrund holen
+* `fg %<jobnummer>`: Job mit Jobnummer `<jobnummer>` in den Vordergrund holen
+* `bg`: Hintergrundprozess fortsetzen
+* `bg %<jobnummer>`: Hintergrundprozess mit Jobnummer `<jobnummer>` in fortsetzen
+* `kill`: sendet Siganle an Prozesse 
+* `kill -s <signal> <PID>`: sendet <signal> an Prozess mit der PID <PID>
+* `kill -<signal> <PID>`: sendet <signal> an Prozess mit der PID <PID>
+* `pkill`: analog zu oben, `pkill` erwartet aber den Namen bzw. einen Teil des Namesns eines Prozesses anstatt der PID
+* `killall`: wie oben, erwartet aber den exakten Prozessnamen
+* `pgrep`: PID laufender Prozesse ermitteln, ähnlich wie `ps -ef | grep`
+* `nohup`: aufgerufener Prozess wird von der aufrufenden Shell gelöst, so dass dieser Prozess auch weiterläuft, wenn die aufrufenden Shell beendet wird
+* `nohup ping 1.1.1.1 > ping.out`: Ausgabe von `ping` in Datei `ping.out` umleiten
+* `tail -f`: fortlaufende Beobachtung einer Datei (neue Einträge werden automatisch angezeigt)
+* `top`: Anzeige laufender Prozesse, ähnlich zum Taskmanager unter Windows, Prozesse können auch interaktiv beeinflusst werden
+* `htop`: komfortablere Varinate von `top`
 
 
 
