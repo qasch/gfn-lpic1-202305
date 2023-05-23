@@ -174,6 +174,10 @@ Textströme können mit Filterkommandos bearbeitet werden, so dass die Informati
 * `cut`: schneidet Spalten aus tabellarisch aufgebauten Dateien aus (`cut -d: -f1 /etc/passwd`: nur die Benutzernamen ausgeben)
 * `tail`: gibt die letzen (Standarmässig 10) Zeilen einer Datei aus (`tail -n5 /etc/passwd`: gibt die letzten 5 Zeilen der `passwd` aus)
 * `grep`: sucht nach einem Suchbegriff innerhalb von Dateien/Textströmen und gibt die entsprechende Zeile aus (`grep bash /etc/passwd`: gibt alle Zeilen aus, in denen der String `bash` vorkommt)
+* `grep -i <pattern>`: Gross- und Kleinschreibung von `<pattern>` ist egal
+* `grep -n <pattern>`: Anzeige der Zeilennummer, in der `<pattern>` gefunden wurde
+* `grep -r <pattern> dir/`: Rekursive Suche, so kann über alle Dateien in einem Verzeichnis _gegrept_ werden
+* `grep -v <pattern>`: _inVert match_: Ausgabe wird _invertiert_, also nur die Zeilen ausgegeben, in denen `<pattern>` *nicht* vorkommt
 * `tr`: übersetzt ein Zeichen in einem Textstrom (es können keine Dateien als Argument übergeben werden) in ein anderes/löscht dieses etc... (`tr a A < datei.txt`: wandelt jedes kleine `a` in ein grosses `A` um)
 * `wc`: gibt die Anzahl der Zeilen, Wörter und Bytes einer Datei an (`wc -l /etc/passwd`: Anzahl Zeilen der Datei `/etc/passwd`)
 * `tee`: verzweigt den Textstrom, so dass sowohl eine Ausgabe erfolgt, als auch in eine Datei geschrieben werden kann (`ls /etc | tee ls-etc.txt`)
