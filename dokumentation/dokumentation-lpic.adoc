@@ -199,7 +199,13 @@ echo $var
 > Tue May 23 03:42:43 PM CEST 2023   # aktuelles Datum wird ausgegeben
 ----
 
-* ``kommando``: ältere Syntax für die Kommandosubstitution
+Ältere Syntax für die Kommandosubstitution, Kommando wird in Backticks (```) eingefasst:
+
+----
+var=`date`
+echo $var
+> Tue May 23 03:42:43 PM CEST 2023   # aktuelles Datum wird ausgegeben
+----
 
 == echo
 
