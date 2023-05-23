@@ -1,4 +1,5 @@
 = Dokumentation LPIC 1
+:toc:
 
 == Kommandos
 
@@ -260,7 +261,7 @@ Auf der Shell kann immer nur ein einzelner Prozess im Vordergrund ausgeführt we
 * `nohup ping 1.1.1.1 > ping.out`: Ausgabe von `ping` in Datei `ping.out` umleiten
 * `tail -f`: fortlaufende Beobachtung einer Datei (neue Einträge werden automatisch angezeigt)
 * `top`: Anzeige laufender Prozesse, ähnlich zum Taskmanager unter Windows, Prozesse können auch interaktiv beeinflusst werden
-* `htop`: komfortablere Varinate von `top`
+* `htop`: komfortablere Variante von `top`
 
 
 
