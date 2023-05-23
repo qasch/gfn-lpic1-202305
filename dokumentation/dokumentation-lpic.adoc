@@ -199,7 +199,7 @@ echo $var
 > Tue May 23 03:42:43 PM CEST 2023   # aktuelles Datum wird ausgegeben
 ----
 
-* \`kommdo\`: ältere Syntax für die Kommandosubstitution
+* ``kommando``: ältere Syntax für die Kommandosubstitution
 
 == echo
 
