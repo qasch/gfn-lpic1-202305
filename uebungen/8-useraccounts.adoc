@@ -6,6 +6,7 @@
 
 Erstellt einen neuen Benutzer `karl` nach folgenden Kriterien:
 
+[cols="1,1"]
 |===
 | Benutzername      
 | karl 
@@ -22,6 +23,7 @@ Erstellt einen neuen Benutzer `karl` nach folgenden Kriterien:
 
 Erstellt einen weiteren Benutzer `lisa` nach folgenden Kriterien:
   
+[cols="1,1"]
 |===
 | Benutzername      
 | `lisa`                                                                            
@@ -39,6 +41,7 @@ Sorgt ausserdem dafür, dass ihr euch als diese Benutzer anmelden könnt.
 
 Erstellt nun einen Pseudobenutzer `moppel` nach folgenden Kriterien:
 
+[cols="1,1"]
 |===
 | Benutzername      
 | `moppel`                                                                         
