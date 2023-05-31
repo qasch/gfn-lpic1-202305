@@ -22,23 +22,32 @@ _Hinweis_: Um die obigen Aufgaben korrekt lösen zu können, müsst ihr vielleic
 
 a) Ermittelt die Anzahl der Benutzer, die die _Bash_ als Login Shell nutzen. Nutzt dafür die Datei `/etc/passwd`.
 
-Schreibt das Ergebnis mit Redirects in eine Datei, `<anzahl>` soll dabei Anzahl der Zeilen angeben:
+Schreibt das Ergebnis mit Redirects in eine Datei `~/anzahl_user_bash.txt`, `<anzahl>` soll dabei Anzahl der Zeilen angeben:
 
 ----
 Anzahl Benutzer, die die BASH nutzen:
 <anzahl>
 ----
 
-b) Ermittelt nun alle _Vollnamen_ bzw. _Kommentare_ der Benutzer, die die BASH als Login Shell benutzen und schreibt das Ergebnis in eine Datei.
+Macht das Ganze in zwei Schritten, also zwei Kommandos.
+
+b) Erstellt analog zu Aufgabe a) eine Datei mit Namen `~/anzahl_user_no-bash.txt`, in der die Anzahl der Benutzer angegeben wird, die *nicht* die BASH als Login Shell nutzen.
+
+----
+Anzahl Benutzer, die *keine* BASH nutzen:
+<anzahl>
+----
+
+c) Ermittelt nun alle _Vollnamen_ bzw. _Kommentare_ der Benutzer, die die BASH als Login Shell benutzen und schreibt das Ergebnis in eine Datei.
 
 _Hinweis_: Schaut euch hierfür den Befehl `cut` und die dazugehörige Manpage an. Ihr erfahrt mehr über den Aufbau der Datei `/etc/passwd` über die entsprechende Manpage. Falls ihr diese nicht finden solltet, lest euch nochmal den Abschnitt über _SECTION_ bzw _ABSCHNITT_ aus der Manpage von `man` durch.
 
 === Übung 3
 
-a) Erstellt eine Datei (ohne Editor, nur über Redirects) mit folgendem Inhalt:
+a) Erstellt eine Datei `i-am.txt` (ohne Editor, nur über Redirects) mit folgendem Inhalt:
 
 ----
-Hallo, ich bin <Name>.
+Hallo, ich bin <username>.
 
 Heute ist der <dd.mm.JJJJ>, hh:mm.
 ----

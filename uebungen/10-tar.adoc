@@ -21,7 +21,7 @@ Datei mit Namen `image1.img` mit einer Größe von 100M erstellen:
 2. Extrahiert den Inhalt des Verzeichnisses `bilder.tar.gz` in das Verzeichnis `/opt` in einem Schritt.
 4. Extrahiere nur die Datei `text.txt` aus dem Archiv `archive.tar` in das Verzeichnis `Dokumente`.
 5. Erstelle ein tar-Archiv mit dem Namen `files.tar` aus dem Verzeichnis `Files` und schließe die Dateien `geheim.doc` und `privat.pdf` aus.
-6. Zeige den Inhalt eines tar-Archivs `archive.tar` an, ohne es zu extrahieren.
-7. Füge die Datei `neu.txt` zu dem bestehenden tar-Archiv `archiv.tar` hinzu.
+6. Zeige den Inhalt eines tar-Archivs `files.tar` an, ohne es zu extrahieren.
+7. Füge die Datei `neu.txt` zu dem bestehenden tar-Archiv `archive.tar` hinzu.
 8. Erstelle ein tar-Archiv mit dem Namen `bilder_2023.tar` aus dem Verzeichnis `Bilder` und schließe Dateien aus, die vor dem Jahr 2023 erstellt wurden.
-10. Erstelle ein `xz`-komprimiertes tar-Archiv mit dem Namen `backup.tar.xz` aus dem Verzeichnis `Ordner` und schließe alle Dateien aus, die das Wort `geheim` im Dateinamen enthalten. Nutz dafür ein einzelnes `tar` Kommando, ohne in einem weiteren Schritt `xz` zu benutzen.
+10. Erstelle ein `xz`-komprimiertes tar-Archiv mit dem Namen `backup.tar.xz` aus dem Verzeichnis `Files` und schließe alle Dateien aus, die das Wort `geheim` im Dateinamen enthalten. Nutz dafür ein einzelnes `tar` Kommando, ohne in einem weiteren Schritt `xz` zu benutzen.
