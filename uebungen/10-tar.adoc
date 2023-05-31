@@ -10,7 +10,7 @@ Datei mit Namen `image1.img` mit einer Größe von 100M erstellen:
 
 * `Dokumente`: test.txt, doc1.txt, doc2.txt
 * `Bilder`: image1.img, image2.jpeg, image3.svg, image4.img
-  * Ändert die Modifizierungszeit der Dateien `image1.img` und `image3.svg` mit dem Kommando `touch` auf den 01.01.2020, 0:00: `touch -t 202201010000 image1.img`.
+  * Ändert die Modifizierungszeit der Dateien `image1.img` und `image3.svg` mit dem Kommando `touch` auf den 01.01.2022, 0:00: `touch -t 202201010000 image1.img`.
 * `Files`: irgendwas.txt, soeinzeugs.txt, geheim.doc, privat.pdf
 
 == Übungen
