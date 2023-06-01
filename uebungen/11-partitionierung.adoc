@@ -1,0 +1,49 @@
+= Übungen Partitionierung
+
+= Partitionierung
+
+== Festplatte partitionieren
+
+a) Erstellt in eurem Hypervisor (_HyperV_ oder _VirtualBox_) eine weitere Festplatte mit einer Grösse von 20G und bindet diese an euren Server an.
+
+a.1) Erzeugt darauf drei Partitionen. Die erste soll eine primäre Partition mit einer Grösse von 8G sein und mit dem Dateisystem `ext2` formatiert werden, die zweite soll eine logische Partition mit einer Grösse von 10G sein und mit dem Dateisystem `XFS` formatiert werden, die dritte ebenfalls eine logische mit einer Größe von 2G und mit dem Dateisystem `exfat` formatiert werden.
+
+a.2) Bindet die drei Partitionen anschließend manuell in euer Linux System ein, indem ihr es in die folgenden Ordner einbindet: `/mnt/ext`, `/mnt/xfs` und `/mnt/exfat`.
+
+a.3) Prüft anschließend, ob ihr als regulärer Benutzer auf den Partitionen Dateien anlegen könnt und nehmt ggf. die dafür notwendigen Anpassungen vor. Schaut euch vor allem die Berechtigungen unter `/mnt/exfat` an und versucht diese zu ändern.
+
+a.4) Entfernt die Partitionen anschließend wieder aus eurem Dateisystembaum.
+
+b.1) Bindet die drei Partitionen nun statisch über die Datei `/etc/fstab` mit ihren Gerätenamen und den Standard Mount Optionen ein:
+
+b.1) Die Partition `/dev/ext` soll
+* über ihre eindeutige ID (UUID) angesprochen werden
+* nur vom Eigentümer ein- und ausgehängt werden können
+* automatisch beim Systemstart eingebunden werden
+* es soll weder ein _dump_ erstellt, noch ein Check mit `fsck` durchgeführt werden
+
+b.2) Die Partition `/dev/xfs` soll
+* über ihre eindeutige ID (UUID) angesprochen werden
+* von allen Benutzern ein- und ausgehängt werden können
+* nicht automatisch beim Systemstart eingebunden werden
+* es soll weder ein _dump_ erstellt, noch ein Check mit `fsck` durchgeführt werden
+
+b.3) Die Partition `/dev/exfat` soll
+* über ihre eindeutige ID (UUID) angesprochen werden
+* von allen Benutzern ein- und ausgehängt werden können
+* nicht automatisch beim Systemstart eingebunden werden
+* es soll weder ein _dump_ erstellt, noch ein Check mit `fsck` durchgeführt werden
+
+b.4) Vergewissert euch, dass das Mounten und Unmounten wie gewünscht funktioniert, sowohl bei einem Neustart als auch beim manuellen mounten, indem ihr beliebige Dateien auf den verschiedenen Partitonen erstellt.
+
+=== Zusatzaufgabe:
+
+c.1) Zusatz: Ändert den Dateisystemtyp der Partition welche mit `ext2` formatiert ist in `ext3` um. Nutzt dafür das Tool `tune2fs`
+
+c.2) Ändert anschließend den Dateisystemtyp auf mit `tune2fs` auf `ext4`.
+
+== Swap Datei erstellen
+
+Erstellt auf eurem Server eine Swap Datei mit einer passenden Grösse und bindet diese ebenfalls über die Datei `/etc/fstab` so ein, dass sie als Swap zu nutzen ist.
+
+Achtet darauf, die bereits vorhandene Swap-Partition zu deaktivieren.
