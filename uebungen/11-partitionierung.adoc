@@ -50,3 +50,16 @@ c.2) Ändert anschließend den Dateisystemtyp auf mit `tune2fs` auf `ext4`.
 Erstellt auf eurem Server eine Swap Datei mit einer passenden Grösse und bindet diese ebenfalls über die Datei `/etc/fstab` so ein, dass sie als Swap zu nutzen ist.
 
 Achtet darauf, die bereits vorhandene Swap-Partition zu deaktivieren.
+
+
+== Kommandos und Verzeichnisse
+
+* fdisk
+* gdisk
+* parted
+* mkfs
+* lsblk
+* blkid
+* mkswap
+* mount 
+* /etc/fstab
