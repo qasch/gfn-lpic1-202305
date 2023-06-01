@@ -17,18 +17,21 @@ a.4) Entfernt die Partitionen anschließend wieder aus eurem Dateisystembaum.
 b.1) Bindet die drei Partitionen nun statisch über die Datei `/etc/fstab` mit ihren Gerätenamen und den Standard Mount Optionen ein:
 
 b.1) Die Partition `/dev/ext` soll
+
 * über ihre eindeutige ID (UUID) angesprochen werden
 * nur vom Eigentümer ein- und ausgehängt werden können
 * automatisch beim Systemstart eingebunden werden
 * es soll weder ein _dump_ erstellt, noch ein Check mit `fsck` durchgeführt werden
 
 b.2) Die Partition `/dev/xfs` soll
+
 * über ihre eindeutige ID (UUID) angesprochen werden
 * von allen Benutzern ein- und ausgehängt werden können
 * nicht automatisch beim Systemstart eingebunden werden
 * es soll weder ein _dump_ erstellt, noch ein Check mit `fsck` durchgeführt werden
 
 b.3) Die Partition `/dev/exfat` soll
+
 * über ihre eindeutige ID (UUID) angesprochen werden
 * von allen Benutzern ein- und ausgehängt werden können
 * nicht automatisch beim Systemstart eingebunden werden
