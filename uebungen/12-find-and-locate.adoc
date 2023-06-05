@@ -1,21 +1,21 @@
-#+TITLE: Übungen zu find und locate
-#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+= Übungen zu find und locate
 
-* Übungen zu find und locate
-
-* Find
+== Find
 
 a) Ermittelt alle Dateien, die eurem Benutzer gehören.
 
-b) Ermittelt alle Dateien, die vor mehr als 12 Stunden geändert wurden.
+b) Ermittelt alle Dateien, die vor weniger als 12 Stunden geändert wurden.
 
-c) Ermittelt alle Dateien, die vor weniger als 2 Stunden geändert wurden.
+c) Ermittelt alle Dateien, die vor mehr als 2 Tagen erstellt wurden.
 
-d) Ermittelt die Anzahl der Dateien auf dem System, die grösser als 40 Byte sind.
+d) Ermittelt die Anzahl der Dateien auf dem System, die grösser als 1 MB sind.
 
-e) Verschiebt alle Dateien in eurem Heimatverzeichniss, die älter als 1 Tag sind in das Verzeichnis =aelter-als-ein-tag=
+e) Kopiert alle Dateien in eurem Heimatverzeichniss, die jünger als 1 Tag sind in das Verzeichnis `juenger-als-ein-tag`
 
-* Locate
+f) Macht die Berechtigungen für eure Nextcloud Installation kaputt, mit dem Kommando `sudo chmod -R 777 /var/www/nextcloud`. Repariert anschliessend die Berechtigungen, so dass alle Verzeichnisse die Standardberechtigungen `0755` erhalten und alle Dateien die Berechtigungen `0644`.
 
-a) =README= ist ein sehr populärer Dateiname. Gebt alle absoluten Pfadnamen
-aller Dateien an, die =README= heissen.
+== Locate
+
+a) `README` ist ein sehr populärer Dateiname. Gebt alle absoluten Pfadnamen aller Dateien an, die `README` heissen.
+
+b) Sucht mit `locate` alle `.tar` Dateien in eurem Heimatverzeichniss. Erstellt nun die Datei `neu.tar` und sucht erneut. `locate` wird euch diese Datei nicht anzeigen. Welches Kommando müsst ihr ausführen, damit ihr die neu erstellte Datei findet?
