@@ -16,7 +16,7 @@ f) Kopiert alle Dateien in eurem Heimatverzeichniss, die jünger als 1 Tag sind 
 
 g) Findet alle leeren Datein in eurem Heimatverzeichniss, die älter als 2 Tage sind.
 
-g) Macht die Berechtigungen für eure Nextcloud Installation kaputt, mit dem Kommando `sudo chmod -R 777 /var/www/nextcloud`. Repariert anschliessend die Berechtigungen, so dass alle Verzeichnisse die Standardberechtigungen `0755` erhalten und alle Dateien die Berechtigungen `0644`.
+h) Macht die Berechtigungen für eure Nextcloud Installation kaputt, mit dem Kommando `sudo chmod -R 777 /var/www/nextcloud`. Repariert anschliessend die Berechtigungen, so dass alle Verzeichnisse die Standardberechtigungen `0755` erhalten und alle Dateien die Berechtigungen `0644`.
 
 == Locate
 
