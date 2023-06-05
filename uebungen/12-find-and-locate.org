@@ -1,0 +1,18 @@
+= Übungen zu find und locate
+
+== Find
+
+a) Ermittelt alle Dateien, die eurem Benutzer gehören.
+
+b) Ermittelt alle Dateien, die vor mehr als 12 Stunden geändert wurden.
+
+c) Ermittelt alle Dateien, die vor weniger als 2 Stunden geändert wurden.
+
+d) Ermittelt die Anzahl der Dateien auf dem System, die grösser als 40 Byte sind.
+
+e) Verschiebt alle Dateien in eurem Heimatverzeichniss, die älter als 1 Tag sind in das Verzeichnis `aelter-als-ein-tag`
+
+== Locate
+
+a) `README` ist ein sehr populärer Dateiname. Gebt alle absoluten Pfadnamen
+aller Dateien an, die `README` heissen.
