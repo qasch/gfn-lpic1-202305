@@ -10,9 +10,13 @@ c) Ermittelt alle Dateien, die vor mehr als 2 Tagen erstellt wurden.
 
 d) Ermittelt die Anzahl der Dateien auf dem System, die grösser als 1 MB sind.
 
-e) Kopiert alle Dateien in eurem Heimatverzeichniss, die jünger als 1 Tag sind in das Verzeichnis `juenger-als-ein-tag`
+e) Ermittelt alle Dateien auf dem System, die zwischen 40B und 1 MB gross sind.
 
-f) Macht die Berechtigungen für eure Nextcloud Installation kaputt, mit dem Kommando `sudo chmod -R 777 /var/www/nextcloud`. Repariert anschliessend die Berechtigungen, so dass alle Verzeichnisse die Standardberechtigungen `0755` erhalten und alle Dateien die Berechtigungen `0644`.
+f) Kopiert alle Dateien in eurem Heimatverzeichniss, die jünger als 1 Tag sind in das Verzeichnis `juenger-als-ein-tag`
+
+g) Findet alle leeren Datein in eurem Heimatverzeichniss, die älter als 2 Tage sind.
+
+g) Macht die Berechtigungen für eure Nextcloud Installation kaputt, mit dem Kommando `sudo chmod -R 777 /var/www/nextcloud`. Repariert anschliessend die Berechtigungen, so dass alle Verzeichnisse die Standardberechtigungen `0755` erhalten und alle Dateien die Berechtigungen `0644`.
 
 == Locate
 
