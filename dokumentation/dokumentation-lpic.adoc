@@ -440,8 +440,51 @@ Gruppenzugehörigkeiten werden erst aktiv, wenn sich der Benutzer einmal komplet
 
 
 
+== Paketmanagement
 
+=== Debian Paketmanagement
 
+- `dpkg -i <datei>.deb`: Paket `<datei>` installieren (oder Update falls Paket schon installiert)
+- `dpkg -I <datei>.deb`: Informationen über Paket `<datei>.deb`
+- `dpkg --info <datei>.deb`: Informationen über Paket `<datei>.deb`
+- `dpkg -r <paket>`: Paket `<paket>` entfernen/deinstallieren (Konfigurationsdateien bleiben erhalten)
+- `dpkg -P <paket>`: Paket `<paket>` entfernen/deinstallieren (Konfigurationsdateien werden mit entfernt)
+- `dpkg -l`: Liste aller auf dem System installierten Pakete inkl. Status (installiert, entfernt, teilweise installiert/entfernt ...)
+- `dpkg --list`: Liste aller auf dem System installierten Pakete inkl. Status (installiert, entfernt, teilweise installiert/entfernt ...)
+`dpkg -l <glob-pattern>`: Liste aller Pakete, die auf `<glob-pattern>` passen 
+- `dpkg --get-selections`: übersichtliche Liste aller installierten Pakete
+- `dpkg -L <paket>`: Liste aller im Paket `<paket>` enthaltener Dateien
+- `dpkg --list-files <paket>`: Liste aller im Paket `<paket>` enthaltener Dateien
+- `dpkg -s`: Statusinformationen aller auf dem System installierten Pakete
+- `dpkg -s <paket>`: Statusinformationen von `<paket>`
+- `dpkg -S /path/to/file`: Angabe, zu welchem Paket `/path/to/file/` gehört
+- `dpkg -`:
+- `dpkg -`:
+
+=== Troubleshooting
+
+Bei fehlerhaften oder nur teilweise installierten Paketen können wir folgende Option von `apt` nutzen:
+
+ apt install -f
+ apt install --fix-broken
+
+== Paketquellen
+
+`Archive type`:: A repository may contain packages with ready-to-run software (binary packages, type deb) or with the source code to this software (source packages, type deb-src). The example above provides binary packages.
+
+`URL`:: The URL for the repository.
+
+`Distribution`:: The name (or codename) for the distribution for which packages are provided. One repository may host packages for multiple distributions. In the example above, disco is the codename for Ubuntu 19.04 Disco Dingo.
+
+`Components`:: Each component represents a set of packages. These components may be different on different Linux distributions. For example, on Ubuntu and derivatives, they are:
+
+`main`:: contains officially supported, open-source packages.
+
+`restricted`:: contains officially supported, closed-source software, like device drivers for graphic cards, for example.
+
+`universe`:: contains community maintained open-source software.
+
+`multiverse`:: contains unsupported, closed-source or patent-encumbered software.
 
 
 
