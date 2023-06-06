@@ -497,6 +497,18 @@ Bei fehlerhaften oder nur teilweise installierten Paketen können wir folgende O
 
 `multiverse`:: contains unsupported, closed-source or patent-encumbered software.
 
+On Debian, the main components are:
+
+`main`:: consists of packages compliant with the Debian Free Software Guidelines (DFSG), which do not rely on software outside this area to operate. Packages included here are considered to be part of the Debian distribution.
+
+`contrib`:: contains DFSG-compliant packages, but which depend on other packages that are not in main.
+
+`non-free`:: contains packages that are not compliant with the DFSG.
+
+`security`:: contains security updates.
+
+`backports`:: contains more recent versions of packages that are in main. The development cycle of the stable versions of Debian is quite long (around two years), and this ensures that users can get the most up-to-date packages without having to modify the main core repository.
+
 == apt-get
 
 - `apt-get update`: Paketindex auf den neuesten Stand bringen
