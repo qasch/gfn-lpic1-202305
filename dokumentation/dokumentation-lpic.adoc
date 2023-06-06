@@ -361,8 +361,6 @@ Gruppenzugehörigkeiten werden erst aktiv, wenn sich der Benutzer einmal komplet
 `su -l tux`: wie oben
 `su --login tux`: wie oben
 
-== TODO
-
 === Besitzer ändern
 
  chown user <datei>
@@ -431,14 +429,29 @@ Gruppenzugehörigkeiten werden erst aktiv, wenn sich der Benutzer einmal komplet
 
 ==== SUID Bit 
 
+Auf eine ausführbare Binärdatei gesetzt, bewirkt das SUID-Bit, dass die Datei mit den Berechtigungen des Besitzers (und nicht den Berechtigungen des aufrufenden Benutzers) ausgeführt wird.
 
+Beispiel:
+
+ /usr/bin/passwd
 
 ==== SGID Bit 
 
+Auf eine ausführbare Binärdatei ähnlich wie das SUID-Bit, nur dass die Datei mit den Berechtigungen der Gruppe ausgeführt wird.
+
+Auf ein Verzeichnis angewendet, sorgt das SGID-Bit dafür, dass darin neu erstellte Dateien der Gruppe des Verzeichnisses zugeordnet werden, nicht der initialien Gruppe des Benutzers, der die Datei erstellt.
+
+Beispiel:
+
+ /var/mail
+
 ==== Sticky Bit
 
+Auf ein Verzeichnis gesetzt, sorgt es dafür, dass nur der Besitzer einer Datei diese ändern oder löschen darf.
 
+Beispiel:
 
+ /tmp
 
 == Paketmanagement
 
@@ -458,8 +471,6 @@ Gruppenzugehörigkeiten werden erst aktiv, wenn sich der Benutzer einmal komplet
 - `dpkg -s`: Statusinformationen aller auf dem System installierten Pakete
 - `dpkg -s <paket>`: Statusinformationen von `<paket>`
 - `dpkg -S /path/to/file`: Angabe, zu welchem Paket `/path/to/file/` gehört
-- `dpkg -`:
-- `dpkg -`:
 
 === Troubleshooting
 
@@ -486,9 +497,21 @@ Bei fehlerhaften oder nur teilweise installierten Paketen können wir folgende O
 
 `multiverse`:: contains unsupported, closed-source or patent-encumbered software.
 
+== apt-get
 
-
-
+- `apt-get update`: Paketindex auf den neuesten Stand bringen
+- `apt-get upgrade`: alle Pakete aktualisieren. Es werden aber keine neuen Pakete installiert oder vorhandene entfernt.
+- `apt-get dist-upgrade`: wie `upgrade`, es werden aber ggf. neue Pakete installiert oder vorhandene entfernt.
+- `apt-get remove`: Paket entfernen, Konfigurationsdateien bleiben erhalten
+- `apt-get remove --purge`: Paket entfernen, Konfigurationsdateien werden mit entfernt
+- `apt-get purge`: Paket entfernen, Konfigurationsdateien werden mit entfernt
+- `apt-get autoremove`: alle Pakete entfernen, die automatisch installiert wurden (als Abhängigkeit) und von keinem weiteren Paket benötigt werden.
+- `apt-get clean`: `.deb` Pakete löschen
+- `apt-cache search`: nach Paketen suchen, akzeptiert RegEx, durchsucht Paketnamen und Beschreibung
+- `apt-cache show`: Informationen über ein Paket
+- `apt-file`: Muss zusätzlich installiert werden 
+- `apt-file search `: Kann herausfinden, welches Paket `<datei>` bereitstellt 
+- `apt-file update `: Paketindex von `apt-file` aktualiseren
 
 
 
