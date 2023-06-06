@@ -1,0 +1,21 @@
+= Paketmanagement Debian
+
+a) Mit welchem `dpkg` Kommando kann man das Paket `package.deb` installieren? Muss hier der Pfad zu einer Datei oder lediglich der Name des Pakets angegeben werden?
+
+b) Wie kann man heraudfinden, welches Paket die Datei `7zr.1.gz` bereitstellt? Nutzt dazu `dpkg-query` und `dpkg`.
+
+c) Kann das Paket `unzip` mit dem Kommando `dpkg -r unzip` deinstalliert werden, obwohl es vom Paket `file-roller` abhängt? Falls nicht, was wäre der richtige Weg?
+
+d) Wie kann man mit dem Kommando `apt-file` herausfinden, welches Paket die Datei `unrar` enthält?
+
+e) Welches `apt-cache` Kommando zeigt detaillierte Informationen über das Paket `gimp`? Was wäre die Entsprechung des Programms `apt`?
+
+f) Welche Zeile müsste der Datei `/etc/apt/sources.list` hinzugefügt werden, um ein Repository, welches unter der URL `http://us.archives.ubuntu.com/ubuntu` gehostet ist und den Quellcode (/source packaged/) für Pakete für `universe` enthält, dem Paket Index hinzuzufügen?
+
+g) Während der Kompilierung eines Programms erscheint eine Fehlermeldung, dass das Header File `zzip-ip.h` auf eurem System nicht zu finden ist. Wie könnt ihr es installieren?
+
+h) Wie kann man eine Dependency Warnung ignoieren und trotzdem ein Paket deinstallieren, obwohl andere Pakete von diesem anhängen?
+
+i) Wie erhält man mehr Informationen über das Paket mit dem Namen `midori`? Verwendet dazu das Tool `apt-cache`.
+
+j) Bevor man ein Paket mit `apt-get` installiert sollte man welchen Befehl ausführen um den Paket Index auf den neusten Stand zu bringen? Welche Dateien werden hier genutzt?
