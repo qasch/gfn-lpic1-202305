@@ -526,4 +526,299 @@ On Debian, the main components are:
 - `apt-file update `: Paketindex von `apt-file` aktualiseren
 
 
+== Paketmanagement Red hat
+
+=== rpm
+
+- kann Programme installieren, die lokal auf dem System vorliegen
+- die Pakete müssen dafür in einem bestimmten Binärformat vorliegen (`.rpm`)
+- Abhängigkeiten können nicht automatisch aufgelöst werden
+- fehlende Abhängigkeiten werden allerdings aufgelistet (jedoch nur die Dateien
+  an sich, nicht die fehlenden _Pakete_)
+- `-v` verboser Output
+- `-h` Hashtags (`#`) als Fortschrittsanzeige
+
+Installation eines Pakets:
+
+----
+rpm -i PACKAGENAME
+rpm -i gimp-2.8.22-1.el7.x86_64.rpm
+----
+
+=== Update
+
+Ein Paket aktualisieren
+
+----
+rpm -U PACKAGENAME
+----
+
+- ist kein Paket mit diesem Namen vorhanden, wird es trotzdem die neues Version installiert.
+- dies kann mit der Option `-F` verhindert werden
+
+=== Deinstallation
+
+----
+rpm -e PACKAGE    # erase
+rpm -e wget
+----
+
+=== Installierte Pakete anzeigen
+
+Alle installierten Pakete anzeigen
+
+----
+rpm -qa      # query all
+----
+
+=== Informationen über Pakete erhalten
+
+Informationen über ein installiertes Paket:
+
+----
+rpm -qi unzip       # query information
+----
+
+Informationen darüber, welche `Dateien` in einem Paket enthalten sind:
+
+----
+rpm -ql unzip      # query list
+----
+
+Informationen über ein `noch nicht` installiertes Paket, hier kann eine FTP-Adresse oder URL angegeben werden:
+
+----
+rpm -qip atom.x86_64.rpm           # query information not installed
+----
+
+----
+rpm -qlp atom.x86_64.rpm     # query list not installed
+----
+
+
+=== Zu welchem Paket gehört eine Datei
+
+----
+rpm -qf /usr/bin/unzip       # query file
+> unzip-6.0-19.el7.x86_64
+----
+
+== YellowDog Updater Modified (yum)
+
+Unterschied zu Debian: Der Paketindex wird automatisch aktualisiert. 
+
+=== nach Paketen suchen
+
+----
+yum search PATTERN
+
+yum search 7zip
+----
+
+=== Installation, Upgrade, Removal
+
+Ohne die Angabe eines Paketnamens wird das gesamte System aktualisiert. Es gibt *kein* `yum upgrade`!
+
+----
+yum update
+----
+
+----
+yum install p7zip
+----
+
+----
+yum update wget
+----
+
+----
+yum check-update PACKAGENAME
+yum check-update                # gesamtes System
+----
+
+=== Pakete nur herunterladen
+
+----
+yum install --downloadonly <package>
+> yum install --downloadonly --downloaddir=<directory> <package>
+----
+
+=== zu welchem Paket gehört eine Datei
+
+----
+yum whatprovides DATEI
+yum whatprovides libgimpui-2.0.so.0
+----
+
+Funktioniert auch mit Dateien:
+
+----
+yum whatprovides /etc/hosts
+----
+
+=== Informationen über ein Paket erhalten
+
+----
+yum info firefox
+----
+
+=== Software Repositories
+
+- Repos sind in `/etc/yum.repos.d` zu finden, z.B. `CentOS-Base.repo`
+- Repos können hinzugefügt werden, indem eine `.repo` Datei dort abgelegt wird (oder am Ende von `/etc/yum.conf`)
+- besser aber mit dem Tool `yum-config-manager`
+
+Um den `yum-config-manager` nutzen zu können muss das Paket `yum-utils` installiert werden.
+
+----
+yum-config-manager --add-repo https://rpms.remirepo.net/enterprise/remi.repo
+
+yum-config-manager --enable-repo baseos-source
+----
+
+Liste der verfügbaren Repositories:
+
+----
+yum repolist all
+----
+
+Repos disablen und enablen:
+
+----
+yum-config-manager --disable <reponame>
+yum-config-manager --disable updates
+yum-config-manager --enable <reponame>
+yum-config-manager --enable updates
+----
+
+=== Cache leeren
+
+----
+# yum clean packages
+# yum clean metadata
+----
+
+= Paketmanagement bei OpenSUSE
+
+- OpenSUSE verwednet `zypper` als Paketmanagement Tool
+- ähnlich wie `apt` und `yum`
+
+== Paketindex aktualisieren
+
+----
+zypper refresh      # Paketindex aktualisieren
+----
+
+- pro Repo kann eingestellt werden, ob der Index automatisch aktualiert werden soll
+
+== nach Paketen suchen
+
+----
+zypper search <paketname>      # nach Paketen suche
+zypper se <paketname>
+zypper se -i              # Liste der installierten Pakete
+zypper se -i <string>     # prüfen, ob Pakete installiert mit <string> im Namen installiert sind
+zypper se -u <string>     # Suche nach nicht-installierten Paketen
+----
+
+== Installation von Paketen
+
+----
+zypper install <paketname>
+zypper in <paketname>
+----
+
+- mit `zypper` können auch lokal vorhandene `.rpmr` Pakete installiert werden
+- Abhängigkeiten werden dabei aufgelöst
+- hier muss der absolute Pfad angegeben werden
+
+== Upgrade von Paketen / des Systems
+
+----
+zypper update        # alle installierten Pakete aktualisieren
+zypper list-updates  # alle Aktualisierungen anzeigen
+----
+
+== Löschen von Paketen
+
+- beim Entfernen von Paketen werden automatisch alle Pakete mit entfernt, die von dem zu entfernenden Paket abhängen
+
+----
+zypper remove <paket>
+zypper re <paket>
+----
+
+== Suche nach dem Paket, welches eine Datei enthält
+
+- hierzu wird der Suchparameter `se` mit der Option `--provides` erweitert
+- es folgt der absolute Pfad zur Datei
+
+----
+# zypper se --provides /usr/lib64/libgimpmodule-2.0.so.0
+----
+
+== Informationen über installierte Pakete
+
+----
+# zypper info gimp
+----
+
+== Software Repositories
+
+- Anzeige aller auf dem System registrierten Repositories mit `zypper repos`
+- mit der Option `modifyrepo` können Repos konfiguriert werden
+- Repos aktivieren und deaktivieren mit `-e` und `-d`:
+
+----
+# zypper modifyrepo -d repo-non-oss
+Repository 'repo-non-oss' has been successfully disabled.
+
+# zypper modifyrepo -e repo-non-oss
+Repository 'repo-non-oss' has been successfully enabled.
+----
+
+- _autorefresh_ für ein Repo ein- bzw. ausschalten mit `-f` und `-F`:
+
+----
+# zypper modifyrepo -F repo-non-oss
+Autorefresh has been disabled for repository 'repo-non-oss'.
+
+# zypper modifyrepo -f repo-non-oss
+Autorefresh has been enabled for repository 'repo-non-oss'.
+----
+
+- Repos können mit `addrepo` hinzugefügt und mit `removerepo` wieder entfernt werden:
+
+----
+# zypper addrepo http://packman.inode.at/suse/openSUSE_Leap_15.1/ packman
+----
+
+- beim Hinzufügen können mit `-f` Autoupdates eingeschaltet werden
+- wird beim Hinzufügen die Option `-d` mit angegeben, wird das Repo hinzugefügt aber nicht aktiviert
+
+----
+# zypper removerepo packman
+----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
