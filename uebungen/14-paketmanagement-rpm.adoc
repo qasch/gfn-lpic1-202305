@@ -1,0 +1,15 @@
+= Paketmanagement RedHat basierte Systeme
+
+a) Wie installiert man das Paket `file-roller-3.28.1-2.el7.x86_64.rpm` auf RedHat basierten Systemen wie z.B. CentOS/Rocky Linux mit dem Kommando `rpm`? Zusätzlich soll ein Fortschrittsbalken während der Installation angezeigt werden.
+
+b) Welches Paket enthält die Datei `/etc/redhat-release`? Nutzt dafür `rpm`.
+
+c) Wie kann man `yum` nutzen um eine Liste der zu aktualisierenden Pakete zu erhalten? Was ist der Unterschied zu `apt`?
+
+d) Wie kann man mit `yum` ein Repository mit dem Namen `repo-extras` deaktivieren?
+
+e) Wo auf dem Dateisystem muss eine `.repo` Datei, die ein Software-Repository enthält abgelegt werden, damit es von `yum` erkannt wird?
+
+f) Der empfohlene Weg, ein Repository auf CentOS basierten Systemen hinzuzufügen, ist über ein bestimmtes Kommando. Was muss eingegeben werden, um das Repo `my-new-repo.repo` hinzuzufügen und zu aktivieren?
+
+g) Wie erhält man mit `rpm` eine Liste aller auf dem System installierten Pakete?
