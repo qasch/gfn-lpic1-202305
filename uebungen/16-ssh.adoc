@@ -1,0 +1,54 @@
+= Übungen zu SSH
+
+== Verbindung
+
+Beschreibt grob stichpunktartig, wie eine Verbindung über SSH aufgebaut wird. Dabei sollen keine Kommandos oder Befehle an sich angegeben werden, sondern die Art wie die Verbindung aufgebaut wird in euren eigenen Worten beschrieben werden.
+
+== Befehle
+
+a) Führt das Kommando zum Auflisten des Inhalts von `~/.ssh` auf dem Server aus.
+
+b) Falls dieser Order auf eurem Server nicht existiert, lasst euch den Inhalt eines anderen Ordners anzeigen.
+
+c) Spielt generell damit herum, Befehle über SSH auf einem entgernten Rechner auszuführen.
+
+== Grundlagen
+
+a) Erstellt auf eurem Client einen `ecdsa` Schlüsselpaar mit einer Länge von 256 Bit. Übernehmt ansonsten die Standardeinstellungen.
+
+b) Erstellt auf eurem Client einen `ed25519` Schlüsselpaar mit einer Länge von 256 Bit. Der Schlüssel soll `ssh-key-nextcloud` heissen und im dafür vorgesehenen Standardverzeichnis abgelegt werden.
+
+== Public Keys
+
+a) Erstellt auf eurem Nextcloud Server einen neuen Benutzer mit Heimatverzeichnis und der BASH als Shell mit dem Namen `helga`.
+
+Lasst euch nun direkt den Inhalt von `helgas` Heimatverzeichnis anzeigen (auch die versteckten) Dateien. Existiert ein Ordner `.ssh`? Falls nicht, wann genau wird dieser ertellt? Bzw. wird er überhaupt automatisch erstellt?
+a.1) Sorgt nun dafür, dass ihr euch von eurem Linux Mint aus per SSH als `helga` auf dem Server anmelden könnt (einfach mit Passwort).
+
+b.1) Die Anmeldung soll nun mittels /Public Key Authentication/ möglich sein. Generiert dafür auf eurem Client (Mint) ein Schlüsselpaar (mit dem Kommando `ssh-keygen`). Es soll ein RSA Schlüssel sein mit einer Länge von 2048 Bit und unter dem Namen `helga` im Ordner `~/.ssh` ihres Heimatverzeichnisses abgelegt werden. Vergebt zur Sicherheit ein beliebiges Passwort.
+
+b.2) Übertragt nun den öffentlichen Teil des Schlüssels auf den Server (in die Datei `~/.ssh/authorized_keys`). Nutzt dazu *nicht* das Programm `ssh-copy-id`, sondern führt die Schritte manuell aus:
+
+- auf dem Server musss sich ein Verzeichnis `.ssh` im Heimatverzeichnis des Benutzers vorliegen, als der ihr euch anmelden möchtet
+- darin muss sich die Datei `authorized_keys` befinden
+- in diese Datei werden die öffentlichen Schlüssel der Benutzer eingetragen, die sich mit dem Server und diesem Benutzeraccount verbinden können sollen
+
+b.3) Verbindet euch nun mit dem Server und prüft, ob die Authentifizierung wirklich über die Public Key Authentication vonstatten geht.
+
+c.1) Meldet euch nun als ein anderer Benutzer auf eurem Client (Mint) an. Erstellt euch auch für diesen Benutzer ein Schlüsselpaar und sorgt dafür, dass sich auch dieser Benutzer als `helga` auf dem Server anmelden kann.
+
+Jetzt könnt ihr auch das Programm `ssh-copy-id` benutzen. Fällt euch etwas auf? Was müsst ihr (im Vergleich zur Demonstration) machen?
+
+c) Man kann mit SSH ja auch lediglich einen Befehl auf dem Zielrechner ausführen, ohne dafür eine interaktive Shell starten zu müssen.
+
+Versucht, so euren Public Key auf den Server in die Datei `authorized_keys` zu übertragen. Erstellt dafür wenn nötig ein weiteres Schlüsselpaar (oder entfernt dazu den vorhin bereits eingetragenen Schlüssel).
+
+Es soll ein einziger Befehl angegeben werden. Denkt wieder an die Möglichkeiten, Befehle zu verknüpfen etc.
+
+== Anmelden als Root
+
+a) Vergebt dem Benutzer `root` auf eurem Server ein Passwort.
+
+b) Meldet euch nun als `root` auf dem Server an. Ändert dafür ggf. die Konfiguration des SSH Daemons.
+
+c) Der Benutzer `root` soll sich nun ausschließlich mittels Pubkey Authentication anmelden dürfen. Führt alle dafür notwendigen Schritte aus und notiert euch diese.
