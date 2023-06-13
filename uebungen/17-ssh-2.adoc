@@ -1,0 +1,69 @@
+= Übungen SSH -Teil 2
+
+== Konfiguration Client / Server
+
+Um die Anmeldung per SSH weiter zu vereinfachen, kann man in der Datei `~/.ssh/config` statische Einträge vornehmen.
+
+a) Sorgt so dafür, dass ihr euch nur mit dem Kommando `ssh debian-server` als Benutzer `helga` auf euren Server anmelden könnt.
+
+b.1) Sorgt nun dafür, dass die Anmeldung auf dem Server *aussschliesslich* über _Public Key Authentication_ möglich ist.
+
+b.2) Ändert ausserdem den Port für SSH Verbindungen auf den Port 2345. 
+
+b.3) Versucht euch nun manuell (also über die Angabe der Parameter auf der Kommandozeile) auf dem Server anzumelden.
+
+b.4) Passt anschließend die Konfigurationsdatei `~/.ssh/config` derart an, dass der Aufruf von `ssh debian-server` wieder funktionert.
+
+b.5) Wie müsst ihr die Konfiguration eures SSH-Servers anpassen, um lediglich `helga` und niemandem sonst die Anmeldung zu ermöglichen?
+
+=== Zusatzaufgabe
+
+c) Wenn ihr euch per SSH mit eurem Server verbindet, erscheint eine Meldung bzw. ein mehr oder weniger ausführlicher Statusbericht über euer System. Dieser wird über die Datei `/etc/motd` und Skripte im Verzeichnis `/etc/update-motd.d` geregelt. Schaut euch diese einmal an und versucht sie grob zu verstehen bzw. anzupassen, falls ihr hier eine gute Idee habt.
+
+Traditionell werden allerdings zwei andere Dateien beim Login über SSH ausgeführt: Noch vor dem Starten der Shell das Script `/etc/ssh/sshrc`, ausserdem wird der Inhalt der Datei `/etc/motd` als Text ausgegeben.
+
+Die Datei `sshrc` eigent sich also für Automatisierungen (z.B. Benachrichtigung per E-Mail sobald sich ein User anmeldet), die Datei `motd` einfach zur Ausgabe einer Begrüssungsmeldung.
+
+c.1) Erstellt die Datei `/etc/motd` und fügt eine Begrüssung ein, beendet eure SSH Verbindung und statet eine neue um eure Eingaben zu prüfen.
+
+c.2) Probiert nun das gleich mit der Datei `/etc/ssh/sshrc`.
+
+c.3) Es werden allerdings noch immer alle Scripte unter `/etc/update-motd.d` ausgeführt. Deaktiviert deren Ausgabe auf eine möglichst simple und nichtdestruktive Art und Weise (die Skripte einfach zu löschen ist also keine Lösung!).
+
+== `known_hosts`
+
+a) Löscht alle Einträge, welche zu eurem (Debian/Nextcloud, also von einem, dessen IP Adresse euch bekannt ist) Server gehören mit einem einzigen Befehl aus eurer lokalen `~/.ssh/known_hosts` Datei.
+
+== SSH Agent
+
+Startet den `ssh-agent` in einer Shell entweder mit `ssh-agent /bin/bash` oder mit `eval $(ssh-agent)`.
+
+a) Lasst euch auf der Konsole alle Schlüssel anzeigen, die der SSH-Agent momentan verwaltet. Wird hier kein Schlüssel angezeigt, fügt einen mit dem Kommando `ssh-add <key>` hinzu.
+
+b) Sperrt den Agenten und versucht, eine Verbindung per SSH herzustellen. Was fällt euch auf? Entsperrt euren Agenten anschließend wieder.
+
+c) Entfernt nun einen einzelnen beliebigen Schlüssel aus dem Agenten.
+
+d) Entfernt nun alle Schlüssel aus eurem Agenten (mit einem einzelnen Kommando) und fügt nun manuell eure(n) Schlüssel wieder hinzu.
+
+== Weiterer Benutzer
+
+a) Startet in einer Konsole mit dem Kommando `su -l karl` eine neue Shell des Benutzers `karl` (oder eines beliebigen anderen vorhandenen Benutzer). Ein Schlüsselpaar für den Login als Benutzerin `helga` auf eurem Zielsystem sollte vorhanden sein. Falls nicht, erstellt es (mit dem Namen `karl-helga` oder ähnlich).
+
+a.1) Versucht euch nun mit diesem Schlüssel am Server zu authentifizieren.
+
+a.2) Müsst ihr das Passwort für den Schlüssel angeben oder nicht? Warum?
+
+a.3) Sorgt nun dafür, dass auch `karl` den _SSH-Agenten_ nutzen kann. Erinnerung: Ihr müsst dazu eine neue Shell für den `ssh-agent` starten und ggf. den oder die Schlüssel dem Agenten hinzufügen.
+
+b) `karl` soll sich nun auch als `tux` (oder einem anderen Benutzer, also nicht `helga`) auf dem Server anmmelden können. Führt alle dafür notwendigen Schritte aus und zwar so, dass auch hier der _SSH-Agent_ genutzt wird.
+
+== Port Forwarding
+
+a) Prüft, ob auf eurem Server der Webserver Apache läuft. Entweder sollte die Standardseite angezeigt werden, oder sogar eure intallierte Nextcloud.
+
+b) Sorgt nun mittels Port Forwarding dafür, dass _lokal_, also auf eurem Hostsystem, die Webseite mit `http://localhost:8888` angezeigt wird. Leitet also den Port 80 auf den lokalen Port 8888 weiter.
+
+c.1) Welche Direktive in der Datei `/etc/ssh/sshd_config` wird genutzt, um das Anmelden von `root` zu ermöglichen?
+
+c.2) Welche Direktive in der Datei `/etc/ssh/sshd_config` wird genutzt, um das Weiterleiten von Ports generell zu ermöglichen oder zu verbieten?
