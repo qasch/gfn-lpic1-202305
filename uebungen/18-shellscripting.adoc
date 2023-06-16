@@ -1,0 +1,41 @@
+= Shell Skripte
+
+a) Wie viele Kommandos in den Verzeichnissen `/bin` und `/usr/bin` eures Linux-Systems sind als Shellskripte realisiert? Schreibt ein kleines Script, mit der ihr diese Frage beantworten könnt (Tipp: Verwendet die Kommandos `find`, `file`, `grep` und `wc`).
+
+b) Erstellt ein Skript, welches ermittelt, wieviele verschiedene "Shells" den Benutzern auf eurem System zugewiesen sind. Mit "Shell" sind sowohl _echte_ Shells als auch solche gemeint, mit denen die User sich nicht anmelden können.
+
+Das Skript soll in einer übersichtlichen Ausgabe sowohl Anzahl als auch die Namen der verschiedenen Shells auflisten.
+
+Hilfreiche Kommandos könnten z.B. sein:
+
+----
+cut
+sort
+wc
+echo
+----
+
+c) Schreibt ein kleines Skript, das ermittelt, ob es sich bei dem übergebenen Pfad um eine Datei oder ein Verzeichnis handelt.
+
+----
+$ ./datei-oder-verzeichnis.sh /etc/passwd
+> /etc/passwd ist eine datei
+
+$ ./datei-oder-verzeichnis.sh /etc/apache2
+> /etc/apache2 ist ein Verzeichnis
+----
+
+d) Erstellt ein Script, dass alle Dateien und Verzeichnisse innerhalb eines Verzeichnisses einem bestimmmten Benutzer und einer Gruppe zuordnet und die angegebenen Berechtigungen setzt.
+
+Das Script fragt also nach
+- dem zu dursuchenden Verzeichnis (z.B. `~/MyDir`)
+- dem Benutzer (z.B. `tux`) Erweiterung: alternativ könnte auch der volle Name
+  angegeben werden
+- der Gruppe (z.B. `tux`)
+- den Berechtigungen (z.B. bei Verzeichnissen `750`, bei Dateien `640` )
+
+Alle Eingaben sollen dahingehend geprüft werden, ob sie sinnvoll und zulässig sind.
+
+Zusatz: Erstellt vorher eine _Kopie_ der ursprünglichen Berechtigungen und des/der Benutzer. Diese _Kopie_ soll lediglich die Ausgabe von `ls -l <verzeichnis>` in eine Datei speichern.
+
+e) Erstellt ein Skript, dem eine beliebige Anzahle von Verzeichnissen übergeben werden kann und das prüft, ob in diesen Verzeichnissen Dateien enthalten sind, die älter sind als 10 Tage. Für jede gefundene Datei soll gefragt werden, ob diese Datei gelöscht werden soll oder nicht.
