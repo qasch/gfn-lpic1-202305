@@ -814,42 +814,52 @@ Benutzten Speicherplatz anzeigen:
 - `du`: _Disk Usage_: genutzten Speicherplatz anzeigen
 
 
+== Scripts
 
-== Regular Expressions
+=== Notationselemente
 
-https://www.debuggex.com/
+- `test -e <path>`: True, falls `<paht>` existiert
+- `[ -e <path> ]`: gleich wie oben, `[ ` (Leerschritt hinter `[` ist wichtig) ist eine andere Schreibweise für das Kommando `test` 
+- `set -x`: Schaltet die Option `x` (Debug Output) ab dieser Zeile ein
+- `set +x`: Schaltet die Option `x` (Debug Output) ab dieser Zeile aus
+- `[[ ]]`: ist eine Alternative zum `test` Kommando bzw. `[ `, bzw. ein syntaktisches Element von BASH, mit mehr Funktionen als das Kommando `test`. Z.B. werden Strings automatisch in Quotes gesetzt, wir können mit `=~` mit einem regulären Ausdruck vergleichen etc.
+- `if test ...; then ... fi` : If-Verzweigung
+- `if [ ... ]; then ... fi` : If-Verzweigung
+- `if [[ ... ]]; then ... fi` : If-Verzweigung
+- Genereller möglicher Aufbau einer If-Verzweigung:
 
-- `.`: ein beliebiges Zeichen
+ if [ ... ]; then 
+   ... 
+ elif [ ... ];then 
+   ...
+ else 
+   ... 
+ fi
 
-- `\w`: Wordcharacter [a-zA-Z0-9_]
-- `\W`: kein Wordcharacter [a-zA-Z0-9_]
-- `\d`: Ziffer [0-9]
-- `\D`: keine Ziffer [0-9]
-- `\s`: Whitespace (Space, Tab, Newline)
-- `\S`: kein Whitespace (Space, Tab, Newline)
+- `!`: Ein Ausrufezeichen in einem `test` Kommando bzw. einer if-Bedingung, _negiert_ den Ausdruch:
 
-- `\b`: Wortgrenze
-- `\B`: keine Wortgrenze
+ [ ! -e <paht> ] # ist TRUE, falls <path> NICHT existiert
 
-Listen:
+- `read -p 'eine Frage' answer`: `eine Frage` wird ausgegeben (wie mit `echo`), die interaktiv einzugebende Anwort wird in der Variablen `answer` gespeichert
+- `exit 0`: Skript wird mit Exit Code `0` (alles okay) beendet
+- `exit 1`: Skript wird mit Exit Code `1` (irgendein Fehler) beendet
+- `<string1> == <string2>`: String Vergleich 
+- `<string> =~ <regex>`: Vergleich auf regulären Ausdruck 
+- `<ausdruck 1> && <ausdruck 2>`: Logisches UND: `<ausdruck 2>` wird nur ausgeführt, wenn `<ausdruck 1>` _wahr_ ist, fehlerfrei ausgeführt werden konnte etc.
+- `<ausdruck 1> || <ausdruck 2>`: Logisches ODER: `<ausdruck 2>` wird nur ausgeführt, wenn `<ausdruck 1>` _falsch_ ist, also nicht ausgeführt werden konnte etc.
 
-- `[]`: passt auf jedes Zeichen, das in den Klammern angegeben ist
-- `[a-z]`: passt auf jeden Kleinbuchstaben
-- `[0-9]`: passt auf alle Zahlen
 
-- `()`: Gruppe
-- `(entweder|oder)`: passt auf `entweder` oder `oder`
 
-Anker:
 
--`^`: Anfang der Zeile
-- `$`: Ende der Zeile
 
-Quantifier:
 
-- `*`: 0 Mal oder beliebig oft
-- `+`: 1 Mal oder beliebig oft
-- `?`: 0 Mal oder 1 Mal
-- `{3}`: exakt 3 Mal
-* `{1,3}`: 1 bis 3 Mal
+
+
+
+
+
+
+
+
+
 
