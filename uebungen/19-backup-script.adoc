@@ -1,0 +1,26 @@
+= Backup Script
+
+Erstellt ein Backup Script nach folgenden Voraussetzungen:
+
+== Aufgabe 1:
+
+- Es soll das komplette Heimatverzeichnis des Benutzers gesichert werden, dessen Name dem Script übergeben wird. Bzw. könnte das Skript auch interaktiv gestaltet werden und nach dem Namen des Benutzers fragen.
+- Das Backup soll mit `tar` erfolgen und mit `bzip2` komprimiert werden
+- Die Dateien sollen folgendes Namensschema erhalten: `backup_home-<user>_<YYYYMMDDhhmm>.tar.bz2`, wobei `<user>` für den Namen des Users steht und `<YYYYMMDDhhmm>` für einen Timestamp.
+- Die Dateien sollen anschliessend mit `gpg` verschlüsselt werden, so dass `root` und der User selbst sie entschlüsseln können.
+- Die Dateien werden zuerst unter `/root/backups` abgelegt.
+- Sorgt dafür, dass ihr im Scripts prüft, ob der aufrufende Benutzer auch über die nötigen Rechte verfügt, das Script auszuführen.
+- Generell sollten alle Eingaben geprüft und das Script in keinem Fall mit einem Syntaxfehler beendet werden. Fangt zuerst simpel an und erweitert/verbessert euer Script im Nachhinein beliebig.
+
+== Aufgabe 2:
+
+- Die Dateien sollen auf einen Backupserver übertragen werden (Dies kann einfach eine weitere Linux Maschine sein).
+- Sie sollen auf dem Zielrechner in das Verzeichnis `/srv/backups` übertragen werden.
+- Nach erfolgreicher Übertragung soll das Original gelöscht werden.
+
+== Aufgabe 3:
+
+- Erweitert das Skript so, dass ihr gefragt werdet, ob ihr lediglich ein Heimatverzeichnis (s.o.) sichern wollt, oder das komplette Dateisystem.
+- Überlegt euch, welche Verzeichnisse hier wichtig, also zu sichern sind und welche Verzeichnisse _und Dateien_ man lieber vom Backup ausschliessen sollte.
+- Die Backups erhalten jetzt einen anderen Namen, nämlich `backup_<hostname>_<YYYYMMDDhhmm>.tar.bz2`
+
