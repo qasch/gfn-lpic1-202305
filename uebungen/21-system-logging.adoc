@@ -1,0 +1,80 @@
+=  Übungen zu System Logging
+
+== rsyslog
+
+a) Mit dem Kommandos `zcat` kann man sich den Inhalt von `gz` komprimierten Dateien anzeigen lassen. Gibt es hier vielleicht auch eine Alternative, sich diese Dateien direkt in einem Pager anzusehen, ohne den Umweg über ein `| less` machen zu müssen?
+
+b) Wie kann man sich den Inhalt der Datei `/var/log/faillog` anzeigen lassen?
+
+c) Wie müssten die folgenden Komponenten eines Log Eintrags zusammengesetzt werden, damit ein valider Eintrag entsteht?
+
+- `debian-server`
+- `sshd`
+- `[515]`
+- `Nov 10 14:44:21`
+- `sshd Server listening on 0.0.0.0 port 22`
+
+d) Welche Regeln müssen der Konfigurationsdatei des `rsyslog` hinzugefügt werden, um das folgende zu erreichen?
+
+- alle Meldungen der `mail` Facility mit einem Level ab `crit` sollen in der Datei `/var/log/mail.crit` abgelegt werden
+
+- alle Meldungen der `mail` Facility mit einem Level ab `alert` sollen in der Datei `/var/log/mail.urgent` abgelegt werden
+- alle Meldungen, ausser die die von `cron` und `ntp` kommen, unabhängig ihres Priority Levels, sollen an `/var/log/messages` gesendet werden
+- Unabhängig von ihrer Facility sollen alle `warning` Meldungen an `/var/log/warnings` gesendet werden. Allerdings *nur* solche mit dem Level `warning`, keine darüber
+
+e) Erklärt die Optionen in der folgenden `logrotate` Konfiguration des `samba` Dienstes:
+
+----
+/var/log/samba/log.smbd {
+        weekly
+        missingok
+        rotate 7
+        postrotate
+                [ ! -f /var/run/samba/smbd.pid ] || /etc/init.d/smbd reload > /dev/null
+        endscript
+        compress
+        delaycompress
+        notifempty
+}
+----
+
+- `weekly`
+- `missingok`
+- `rotate 7`
+- `postrotate`
+- `endscript`
+- `compress`
+- `delaycompress`
+- `notifyempty`
+
+== journalctl
+
+a) Gebt die entsprechenden Befehle an, um das Journal nach den folgenden
+Kriterein zu filtern:
+
+- zeige Kernel Logs
+- Zeige alle Log Einträge des zweiten Boots.
+- Zeige alle Log Einträge des zweiten Boots, den neusten Eintrag aber zuerst anstatt zuletzt.
+- Zeige die aktuellsten Log Einträge kontinuierlich an, so dass auch neu dazu kommende mit angezeigt werden.
+- Zeige auschliesslich neu hinzu kommende Meldungen an und zwar ab dem jetztigen Zeitpunkg.
+- Zeige alle Meldungen des vorherigen Boots mit einer Priority von `warning` und darüber in umgekehrter Reihenfolge.
+
+b) Gebt die entsprechenden Kommandos an:
+
+- Welches Kommando zeigt den vom kompletten Journal eingenommenen Speicherplatz an?
+- Verkleinere das Journal so, dass anschließend nur noch etwas 200MiB davon genutzt werden.
+
+c) Welche Einträge sollten in der Konfigurationsdatei des Journals wie geändert werden, damit Meldungen nach `/dev/tty5` weitergeleitet werden?
+
+d) Welche Optionen müssen an `journalctl` übergeben werden, um nach den folgenden Einträgen zu filtern?
+
+- Zeige Meldungen eines bestimmten Benutzers an
+- Zeige Meldungen des Hosts `debian` an
+- Zeige Meldungen einer bestimmtem Benutzergruppe an
+- Zeige Meldungen von `root` an
+- Zeige alle Meldungen des Kommandos `sudo` an (mind. 2 Möglichkeiten)
+
+e) Normalerweise werden durch die Angabe einer bestimmten /Priority/ auch alle Priorities angezeigt, die höher sind als die angegebene. Wie kann man sich allerdings nur einen bestimmten Bereich anzeigen lassen, also nur Meldungen von `warning` bis `crit`?
+
+f) Priorities können auch durch Zahlen repräsentiert werden. Was wäre die Entsprechung des vorherigen Kommandos mit den Zahlenwerten?
+
