@@ -29,7 +29,7 @@ d) Prüft, ob euer Netzwerk funktioniert. Falls nicht, prüft die Routingtabelle
 
 e) Wiederholt obige Aufgaben unter der Verwendung der Kommandos `ifconfig` und `route`.
 
-* Troubleshooting Commands
+== Troubleshooting Commands
 
 a) Mit welchen Kommandos kann ein ICMP Echo an gfn.de gesendet werden?
 
