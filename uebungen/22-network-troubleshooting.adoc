@@ -1,0 +1,53 @@
+= Übungen Network Troubleshooting
+
+== Fragen
+
+a) Mit welchem Kommandos kann man sich eine Liste der Netzwerkadapter anzeigen lassen?
+
+b) Wie kann man ein Interface deaktivieren? Und wie reaktivieren?
+
+c) Was ist eine brauchbare Subnetzmaske für IPv4?
+
+d) Welche Kommandos können genutzt werden, um die Default Route zu verifizieren?
+
+e) Wie kann man einem Interface eine zweite IP Adresse hinzufügen?
+
+f) Wie kann man mit den Kommandos `ip route` und `route` eine default Route hinzufügen?
+
+g) Wie erhält man detaillierte Informationen über das `ip neighbour` Kommando? Was für eine Ausgabe erhält man, wenn man es ohne Argumente ausführt?
+
+h) Wie kann man ein Backup seiner Routingtabelle anlegen und wiederherstellen? Konsultiert dazu die entsprechende Manpage.
+
+== Praxisteil
+
+a) Entfernt alle eurem Interface zugewiesenen IP Adressen, Subnetzmasken etc. mit dem Kommando `ip` in einem einzigen Befehl.
+
+b) Verfahrt nun genauso mit den dem Interface zugewiesenen Routen.
+
+c) Fügt dem Interface jetzt manuell mit dem Kommando `ip` eine beliebige IP Adresse hinzu. Achtet dabei darauf, dass es sich hierbei um eine gültige, noch nicht anderweitig vergebene Adresse aus eurem Netz handelt.
+d) Prüft, ob euer Netzwerk funktioniert. Falls nicht, prüft die Routingtabelle und fügt ggf. eine Default Route hinzu. Funktionert es jetzt?
+
+e) Wiederholt obige Aufgaben unter der Verwendung der Kommandos `ifconfig` und `route`.
+
+* Troubleshooting Commands
+
+a) Mit welchen Kommandos kann ein ICMP Echo an gfn.de gesendet werden?
+
+b) Mit welchen Kommandos kann man die Route zu 1.1.1.1 ermitteln?
+
+c) Mit welchen Kommados kann man überprüfen, ob ein Prozess an Port 80 lauscht?
+
+d) Wie kann man herausfinden, welcher Prozess an einem bestimmten Port lauscht?
+
+e) Wie ermittelt man den maximalen MTU für einen Netzwerkpfad?
+
+f) Wie kann man mit `netcat` einen HTTP Request an einen Webserver schicken?
+
+g) Nennt ein paar Gründe, aus denen ein Ping fehlschlagen kann.
+
+h) Nennt ein Programm, mit dem ankommende und ausgehende Netzwerkpakete untersucht werden können.
+
+i) Wie kann man `traceroute` dazu bringen, ein bestimmtes Interface zu nutzen?
+
+j) Ist es möglich, sich auch mit `traceroute` die MTUs anzeigen zu lassen?
+
