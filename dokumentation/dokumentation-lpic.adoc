@@ -453,7 +453,7 @@ Beispiel:
 
  /tmp
 
-== Paketmanagement
+== Paketmanagement Debian
 
 === Debian Paketmanagement
 
@@ -479,7 +479,7 @@ Bei fehlerhaften oder nur teilweise installierten Paketen können wir folgende O
  apt install -f
  apt install --fix-broken
 
-== Paketquellen
+=== Paketquellen
 
 `Archive type`:: A repository may contain packages with ready-to-run software (binary packages, type deb) or with the source code to this software (source packages, type deb-src). The example above provides binary packages.
 
@@ -509,7 +509,7 @@ On Debian, the main components are:
 
 `backports`:: contains more recent versions of packages that are in main. The development cycle of the stable versions of Debian is quite long (around two years), and this ensures that users can get the most up-to-date packages without having to modify the main core repository.
 
-== apt-get
+=== apt-get
 
 - `apt-get update`: Paketindex auf den neuesten Stand bringen
 - `apt-get upgrade`: alle Pakete aktualisieren. Es werden aber keine neuen Pakete installiert oder vorhandene entfernt.
@@ -698,12 +698,12 @@ yum-config-manager --enable updates
 # yum clean metadata
 ----
 
-= Paketmanagement bei OpenSUSE
+== Paketmanagement bei OpenSUSE
 
 - OpenSUSE verwednet `zypper` als Paketmanagement Tool
 - ähnlich wie `apt` und `yum`
 
-== Paketindex aktualisieren
+=== Paketindex aktualisieren
 
 ----
 zypper refresh      # Paketindex aktualisieren
@@ -711,7 +711,7 @@ zypper refresh      # Paketindex aktualisieren
 
 - pro Repo kann eingestellt werden, ob der Index automatisch aktualiert werden soll
 
-== nach Paketen suchen
+=== nach Paketen suchen
 
 ----
 zypper search <paketname>      # nach Paketen suche
@@ -721,7 +721,7 @@ zypper se -i <string>     # prüfen, ob Pakete installiert mit <string> im Namen
 zypper se -u <string>     # Suche nach nicht-installierten Paketen
 ----
 
-== Installation von Paketen
+=== Installation von Paketen
 
 ----
 zypper install <paketname>
@@ -732,14 +732,14 @@ zypper in <paketname>
 - Abhängigkeiten werden dabei aufgelöst
 - hier muss der absolute Pfad angegeben werden
 
-== Upgrade von Paketen / des Systems
+=== Upgrade von Paketen / des Systems
 
 ----
 zypper update        # alle installierten Pakete aktualisieren
 zypper list-updates  # alle Aktualisierungen anzeigen
 ----
 
-== Löschen von Paketen
+=== Löschen von Paketen
 
 - beim Entfernen von Paketen werden automatisch alle Pakete mit entfernt, die von dem zu entfernenden Paket abhängen
 
@@ -748,7 +748,7 @@ zypper remove <paket>
 zypper re <paket>
 ----
 
-== Suche nach dem Paket, welches eine Datei enthält
+=== Suche nach dem Paket, welches eine Datei enthält
 
 - hierzu wird der Suchparameter `se` mit der Option `--provides` erweitert
 - es folgt der absolute Pfad zur Datei
@@ -757,13 +757,13 @@ zypper re <paket>
 # zypper se --provides /usr/lib64/libgimpmodule-2.0.so.0
 ----
 
-== Informationen über installierte Pakete
+=== Informationen über installierte Pakete
 
 ----
 # zypper info gimp
 ----
 
-== Software Repositories
+=== Software Repositories
 
 - Anzeige aller auf dem System registrierten Repositories mit `zypper repos`
 - mit der Option `modifyrepo` können Repos konfiguriert werden
@@ -899,3 +899,43 @@ Stringvergleich:
 - `<zahl1> -ge <zahl2>`: prüft, ob `<zahl1>` grösser oder gleich `<zahl2>` ist
 - `<zahl1> -lt <zahl2>`: prüft, ob `<zahl1>` kleiner ist als `<zahl2>`
 - `<zahl1> -le <zahl2>`: prüft, ob `<zahl1>` kleiner oder gleich `<zahl2>` ist
+
+== Dateien mit gesetzten Sonderbits finden
+
+Wir durchsuchen das gesamte System mit `find` und prüfen so jede Datei auf gesetzte Berechtigungen. Berechtigungen der Sonderbits:
+
+- Sticky-Bit: `1000`
+- SGID-Bit: `2000`
+- SUID-Bit: `4000`
+
+Alle Dateien, wo *auschließlich* bzw. *exakt* nur das SUID-Bit gesetzt ist:
+
+ find / -perm 4000
+ find / -perm u=s
+ find / -perm u+s
+
+Alle Dateien, wo *mindestens* nur das SUID-Bit gesetzt ist (`-` vor den Berechtigungen [-> mindestens]):
+
+ find / -perm -4000
+ find / -perm -u=s
+ find / -perm -u+s
+
+Alle Dateien, wo *entweder* das SUID-Bit oder das SGID-Bit gesetzt ist (`/` or den Berechtigungen [-> entweder oder]):
+
+ find / -perm /6000
+ find / -perm /ug=s
+ find / -perm /ug+s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
