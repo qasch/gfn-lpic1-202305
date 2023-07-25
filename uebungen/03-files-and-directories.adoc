@@ -16,7 +16,7 @@ Erselle ein Verzeichnis "uebungen-dateien-verzeichnisse" im aktuellen Verzeichni
 
 6. Lösche die Datei "my_file_copy.txt" im aktuellen Verzeichnis.
 
-7. Lösche anschliessend die Datei "my_file_copy.txt" im Verzeichnis "my_folder"
+7. Lösche anschliessend die Datei "my_file.txt" im Verzeichnis "my_folder"
 
 8. Lösche das Verzeichnis "my_folder" und alle Dateien und Unterverzeichnisse darin.
 
